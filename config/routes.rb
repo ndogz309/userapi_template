@@ -1,14 +1,15 @@
 Usersapi::Application.routes.draw do
   root :to => 'pages#home'
 
-  devise_for :users
+
+  devise_for :users, :controllers => { :registrations => :registrations }
   #root 'pages#home'
   
 namespace :api   do
     namespace :v1 do
     
       resources :users, only: [:index, :create, :show, :update, :destroy], defaults: { format: 'json' }
-
+resources :sessions, :only => [:create, :destroy]
     end
   end
 
