@@ -4,6 +4,14 @@ Usersapi::Application.routes.draw do
   devise_for :users
   #root 'pages#home'
   
+namespace :api   do
+    namespace :v1 do
+    
+      resources :users, only: [:index, :create, :show, :update, :destroy], defaults: { format: 'json' }
+
+    end
+  end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
